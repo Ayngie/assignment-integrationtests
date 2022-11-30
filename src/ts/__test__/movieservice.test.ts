@@ -3,12 +3,12 @@
  */
 
 import { IOmdbResponse } from "../models/IOmdbResponse"; //import av interface.
-import { movieservice } from "../services/movieservice"; //import av den fil vi kör mock på.
+// import { movieservice } from "../services/movieservice"; //import av den fil vi kör mock på.
 import { IMovie } from "../models/Movie";
 import { mockData } from "../services/__mocks__/movieservice";
 
 /* import av vår modul: */
-jest.mock("../services/movieservice.ts"); //detta är all kod vi behöver för att kunna använda vår mock service.ts fil (modul). //import av vår mock-modul: mockfilen service.ts, som liggert i mappen _ _ mocks _ _, som ligger på samma nivå som ursprungs (riktiga) service.ts-filen...
+// jest.mock("../services/movieservice.ts"); //detta är all kod vi behöver för att kunna använda vår mock service.ts fil (modul). //import av vår mock-modul: mockfilen service.ts, som liggert i mappen _ _ mocks _ _, som ligger på samma nivå som ursprungs (riktiga) service.ts-filen...
 
 jest.mock("axios", () => ({
   get: async () => {
