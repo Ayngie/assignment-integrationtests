@@ -3,30 +3,42 @@
  */
 
 import { movieSort } from "../functions";
-import { mockData } from "../services/__mocks__/movieservice";
+import { IMovie } from "../models/Movie";
 
 describe(movieSort, () => {
+  afterEach(jest.clearAllMocks);
+
   test("should sort movies in alphabetical order (descending)", () => {
     //test av if-sats
     // Arrange
     // Behövs inte, pga finns klart o importeras (mockData).
-
+    let movies: IMovie[] = [
+      { Title: "Aaa", imdbID: "Aaa", Type: "Aaa", Poster: "Aaa", Year: "Aaa" },
+      { Title: "Ddd", imdbID: "Ddd", Type: "Ddd", Poster: "Ddd", Year: "Aaa" },
+      { Title: "Ccc", imdbID: "Ccc", Type: "Ccc", Poster: "Ccc", Year: "Ccc" },
+      { Title: "Ddd", imdbID: "Ddd", Type: "Ddd", Poster: "Ddd", Year: "Aaa" },
+    ];
     // Act
-    movieSort(mockData, true);
+    movieSort(movies);
 
     // Assert
-    expect(mockData[0].Title).toBe("Gone with the Wind");
+    expect(movies[0].Title).toBe("Aaa");
   });
 
   test("should sort movies in alphabetical order (ascending)", () => {
     //test av else-sats
     // Arrange
     // Behövs inte, pga finns klart o importeras (mockData).
-
+    let movies: IMovie[] = [
+      { Title: "Ccc", imdbID: "Ccc", Type: "Ccc", Poster: "Ccc", Year: "Ccc" },
+      { Title: "Aaa", imdbID: "Aaa", Type: "Aaa", Poster: "Aaa", Year: "Aaa" },
+      { Title: "Ddd", imdbID: "Ddd", Type: "Ddd", Poster: "Ddd", Year: "Aaa" },
+      { Title: "Ddd", imdbID: "Ddd", Type: "Ddd", Poster: "Ddd", Year: "Aaa" },
+    ];
     // Act
-    movieSort(mockData, false);
+    movieSort(movies, false);
 
     // Assert
-    expect(mockData[0].Title).toBe("Guardians of the Galaxy");
+    expect(movies[0].Title).toBe("Ddd");
   });
 });
