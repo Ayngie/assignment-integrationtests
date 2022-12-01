@@ -82,3 +82,16 @@ describe("createHtml", () => {
     expect(document.querySelectorAll(".movie").length)?.toBe(mockData.length);
   });
 });
+
+describe("handleSubmit", () => {
+  // //Arrange
+  // let spy = jest.spyOn(movieAppFunctions, "handleSubmit").mockImplementation(
+  //   () =>
+  //     new Promise((resolve)=>{
+  //       resolve();
+  //     });
+  //   );
+  // movieAppFunctions.init();
+  // //Act
+  // //Assert
+});
