@@ -53,13 +53,6 @@ describe("getData", () => {
 
     //Assert
     expect(result.length).toBe(0);
+    expect(result).toStrictEqual([]);
   });
-
-  // test("should not get mock data from api", async () => {
-  //   // console.log("test:should not get mock data from api");
-  //   mockAxios.get.mockRejectedValue({ data: { Search: mockMovies } });
-  //   let result: IMovie[] = await getData("../services/movieservice.ts");
-
-  //   expect(result.length).toBe(0);
-  // });
 });

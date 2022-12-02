@@ -12,13 +12,14 @@ export const init = () => {
 };
 
 export async function handleSubmit() {
+  //ska skicka tillbaka ett promise, kommer ha datatyp void om funktionen är asynkron o inte skickar tillbaka ngt - vanligt m funktioner som denna som ska sätta igång saker.
   let searchText = (document.getElementById("searchText") as HTMLInputElement)
-    .value;
+    .value; //hämtar värdet i inputtagen, gör en variabel av det.
 
   let container: HTMLDivElement = document.getElementById(
     "movie-container"
-  ) as HTMLDivElement;
-  container.innerHTML = "";
+  ) as HTMLDivElement; //hämtar diven för att skriva ut sökresultat i.
+  container.innerHTML = ""; //tömmer diven så det ej ska bli dubbelt upp.
 
   try {
     movies = await getData(searchText);
