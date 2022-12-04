@@ -5,6 +5,7 @@
 import { getData } from "../services/movieservice";
 import { IMovie } from "../models/Movie";
 import { mockData } from "../services/__mocks__/movieservice";
+import { test, expect, describe, jest } from "@jest/globals";
 import axios from "axios";
 
 // jest.mock("axios", () => ({

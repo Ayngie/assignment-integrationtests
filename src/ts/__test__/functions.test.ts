@@ -4,6 +4,7 @@
 
 import { movieSort } from "../functions";
 import { IMovie } from "../models/Movie";
+import { test, expect, describe, jest } from "@jest/globals";
 
 describe(movieSort, () => {
   afterEach(jest.clearAllMocks);

@@ -5,7 +5,7 @@
 import { IMovie } from "../models/Movie";
 import * as movieAppFunctions from "../movieApp";
 
-import { test, expect, jest } from "@jest/globals";
+import { test, expect, describe, jest } from "@jest/globals";
 import { mockData } from "../services/__mocks__/movieservice";
 import { getData } from "../services/movieservice";
 
