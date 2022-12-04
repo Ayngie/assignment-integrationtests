@@ -111,14 +111,14 @@ describe("handleSubmit", () => {
       .value; //hämtar värdet i inputtagen, gör en variabel av det.
     console.log("Test input value: ", searchText);
     let spy = jest.spyOn(movieAppFunctions, "createHtml").mockReturnValue();
-
-    //act
     let movies: IMovie[] = await getData(searchText);
     console.log("Test movies: ", movies);
+
+    //act
     await movieAppFunctions.handleSubmit();
 
     //assert
     expect(movies[0].Title).toBe("Gone with the Wind (Mock)");
-    expect(spy).toHaveBeenCalled();
+    expect(spy).toHaveBeenCalledTimes(1);
   });
 });
