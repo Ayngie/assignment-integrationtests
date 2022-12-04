@@ -5,7 +5,7 @@ import { IMovie } from "../../models/Movie";
 export const mockData: IMovie[] = [
   //Exporterad variabel, kan användas i alla test denna mockfil importeras till.
   {
-    Title: "Gone with the Wind",
+    Title: "Gone with the Wind (Mock)",
     imdbID: "tt0031381",
     Type: "movie",
     Poster:
@@ -13,7 +13,7 @@ export const mockData: IMovie[] = [
     Year: "1939",
   },
   {
-    Title: "Guardians of the Galaxy",
+    Title: "Guardians of the Galaxy (Mock)",
     imdbID: "tt2015381",
     Type: "movie",
     Poster:
@@ -22,24 +22,23 @@ export const mockData: IMovie[] = [
   },
 ];
 
-// export const getData = async (Searchtext: string): Promise<IMovie[]> => {
-//   return new Promise((resolve, reject) => {
-//     //måste ta emot ett löfte eftersom det är vad funktionen levererar.
-
-//     if (Searchtext !== "") { //om användaren inte skriver in tom string"".
-//       if(...) {//om sökresultat finns.
-//         resolve(mockData); //vi ska få en mockad lista tillbaka. Den kan vi ju dra in som en variabel om vi skapat den.
-//       }
-//       else {
-//         resolve([]); //inget resultat fanns, skicka tillbaka en tom lista.
-//       }
-//     }
-//     else {
-//       //vi får ett fel.
-//       reject("Du måste ange ett sökord");
-//     }
-//   });
-// };
+export const getData = async (Searchtext: string): Promise<IMovie[]> => {
+  return new Promise((resolve, reject) => {
+    //måste ta emot ett löfte eftersom det är vad funktionen levererar.
+    if (Searchtext !== "") {
+      //om användaren inte skriver in tom string"".
+      if ("Gone with the Wind") {
+        //om sökresultat finns.
+        resolve(mockData); //vi ska få en mockad lista tillbaka. Den kan vi ju dra in som en variabel om vi skapat den.
+      } else {
+        resolve([]); //inget resultat fanns, skicka tillbaka en tom lista.
+      }
+    } else {
+      //vi får ett fel.
+      reject("Du måste ange ett sökord");
+    }
+  });
+};
 
 // export const getData = async () => {
 //   //en funktion som vi exporterar i denna modul.

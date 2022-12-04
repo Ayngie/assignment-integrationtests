@@ -92,53 +92,33 @@ describe("displayNoResult", () => {
   });
 });
 
-// describe("handleSubmit", () => {
-//   beforeEach(() => {
-//     jest.resetModules();
-//     jest.restoreAllMocks();
-//   });
-//   test("should call createHtml if movies.length > 0", () => {
-//     //Arrange
-//     document.body.innerHTML = `
-//     <form id="searchForm">
-//         <input type="text" id="searchText" placeholder="Skriv titel här" />
-//         <button type="submit" id="search">Sök</button>
-//     </form>
-//     <div id="movie-container"></div>
-//     `; //skapar innerHTML.
+describe("handleSubmit", () => {
+  beforeEach(() => {
+    jest.resetModules();
+    jest.restoreAllMocks();
+  });
 
-//     let createHtmlSpy = jest
-//       .spyOn(movieAppFunctions, "createHtml")
-//       .mockReturnValue(); //spionera på anrop på createHtml
+  test("should call createHtml if movies.length > 0", async () => {
+    //arrange
+    document.body.innerHTML = `
+    <form id="searchForm">
+      <input type="text" id="searchText" placeholder="Skriv titel här" value="Gone with the Wind"/>
+      <button type="submit" id="search">Sök</button>
+    </form>
+    <div id="movie-container"></div>
+    `;
+    let searchText = (document.getElementById("searchText") as HTMLInputElement)
+      .value; //hämtar värdet i inputtagen, gör en variabel av det.
+    console.log("Test input value: ", searchText);
+    let spy = jest.spyOn(movieAppFunctions, "createHtml").mockReturnValue();
 
-//       let
-//     // //Act
-//     getData(mockData);
-//     // //Assert
-//     expect(createHtmlSpy).toHaveBeenCalledTimes(1);
-//   });
+    //act
+    let movies: IMovie[] = await getData(searchText);
+    console.log("Test movies: ", movies);
+    await movieAppFunctions.handleSubmit();
 
-// test("should call displayNoResult if movies.length = 0", () => {
-//   //Arrange
-//   // //Act
-//   // //Assert
-// });
-
-// test("should call displayNoResult if error (eg. no userInput)", () => {
-//   //Arrange
-//   let spy = jest.spyOn(movieAppFunctions, "handleSubmit").mockReturnValue(
-//     new Promise<void>((reject) => {
-//       // måste skriva mockreturn new Promise för det är en async function. Då får jag ett promise tillbaka som jag vill specificera reject() = (ingenting).
-//       reject("Du måste ange ett sökord");
-//     })
-//   ); //lyssnar efter anrop på funktion handleSubmit, som ska anropas vid submit av userInput.
-
-//   let searchText: string = "";
-//   movieAppFunctions.init(); //anropar init för att där finns vår addEventListener.
-
-//   // //Act
-//   movieAppFunctions.handleSubmit();
-//   // //Assert
-//   expect(spy).toHaveBeenCalledTimes(1);
-// });
-// });
+    //assert
+    expect(movies[0].Title).toBe("Gone with the Wind (Mock)");
+    expect(spy).toHaveBeenCalled();
+  });
+});
