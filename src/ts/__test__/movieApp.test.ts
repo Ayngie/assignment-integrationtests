@@ -61,7 +61,6 @@ describe("createHtml", () => {
     console.log(document.querySelectorAll("div"));
     console.log(document.querySelectorAll(".movie"));
     console.log(mockData.length);
-    console.log(document.querySelectorAll("img"));
 
     expect(mockData[0].Title).toContain("Gone with the Wind");
     expect(mockData[1].Title).toContain("Guardians of the Galaxy");
@@ -69,7 +68,6 @@ describe("createHtml", () => {
     expect(document.querySelectorAll("div").length)?.toBe(3);
     expect(document.querySelectorAll(".movie").length)?.toBe(2); //.movie är klassen som tilldelas varje div i loopen som skapar upp html för filmerna.
     expect(document.querySelectorAll(".movie").length)?.toBe(mockData.length);
-    expect(document.querySelectorAll(".img").length)?.toBe(2);
   });
 });
 
